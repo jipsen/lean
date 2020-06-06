@@ -157,7 +157,7 @@ tc.stateless $ λ _, do
         pn ← pure $ expr.local_pp_name lc,
         lh : html γ ← local_c lc,
         pure
-          $ h "tr" [key $ to_string $ expr.local_uniq_name lc] [
+          $ h "tr" [key $ to_string $ expr.local_uniq_name lc, cn "v-top"] [
               h "td" [cn "goal-hyp b"] [html.of_name pn],
               h "td" [] [html.of_string " : "],
               h "td" [] [lh]
@@ -167,7 +167,7 @@ tc.stateless $ λ _, do
       (expr.mvar u_n pp_n y) ← pure g,
       pure $ h "table" [key $ expr.hash g, className "font-code"] [
         h "tbody" [] $ lchs ++ [
-            h "tr" [key u_n, className "bt"] [
+            h "tr" [key u_n, className "bt v-top"] [
               h "td" [] [] ,
               h "td" [cn "goal-vdash b"] [html.of_string " ⊢ "],
               h "td" [] [t_comp]
